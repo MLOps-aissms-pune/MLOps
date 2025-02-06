@@ -1,0 +1,27 @@
+base:
+  project: MLOps_aissms
+  random_state: 20
+  target_col: charges
+
+data_source:
+  raw_dataset_csv: data/raw/insurance.csv
+
+load_data:
+  clean_data: data/processed/insurance.csv
+
+split_data:
+  train_path: data/processed/train_mlops.csv
+  test_path: data/processed/test_mlops.csv
+  test_size: 0.2
+
+estimator:
+  ElasticNet:
+    params:
+      alpha: 0.9
+      l1_ratio: 0.6
+
+model_path: models/models.joblib
+
+reports:
+  params: reports/params.json
+  score: reports/scores.json
