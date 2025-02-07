@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/820719139731175268/cb0365882672479f97ea170c537cb704/artifacts
+end_time: 1738908038844
+entry_point_name: ''
+experiment_id: '820719139731175268'
+lifecycle_stage: active
+run_id: cb0365882672479f97ea170c537cb704
+run_name: mlops
+run_uuid: cb0365882672479f97ea170c537cb704
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1738908035547
+status: 4
+tags: []
+user_id: vaishnavi
