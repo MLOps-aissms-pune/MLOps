@@ -14,7 +14,7 @@ split_data:
   test_path: data/processed/test_mlops.csv
   test_size: 0.2
 
-estimator:
+estimators:
   ElasticNet:
     params:
       alpha: 0.9
@@ -22,6 +22,13 @@ estimator:
 
 model_path: models/models.joblib
 
-reports:
-  params: reports/params.json
-  score: reports/scores.json
+# reports:
+#   params: reports/params.json
+#   score: reports/scores.json
+
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: insurance_aissms
+  run_name: mlops
+  registered_model_name: ElasticNet
+  remote_server_uri: http://127.0.0.1:5000
