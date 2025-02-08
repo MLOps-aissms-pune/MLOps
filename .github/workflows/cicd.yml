@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: 3.12
 
-      - name: Install dependencies # Install dependencies
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
@@ -38,3 +38,8 @@ jobs:
           context: .
           push: true
           tags: vaishnavi639/mlops:latest
+      - name: Image_scan
+        run: trivy image vaishnavi639/mlops:latest > scan.txt
+
+      - name: Trivy Compliance
+        run: trivy image --compliance docker-cis vaishnavi639/mlops:latest > compliance.txt
