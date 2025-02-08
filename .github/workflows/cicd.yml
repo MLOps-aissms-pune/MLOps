@@ -7,7 +7,7 @@ on:
 
 jobs:
   build_analyze_scan:
-    Name: Build
+    name: Build
     runs-on: ubuntu-latest #[self-hosted:- self hosted runner if u want to use computation of ec2]
     steps:
       - name: Checkout repository
