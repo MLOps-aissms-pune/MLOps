@@ -11,6 +11,7 @@ COPY ./models/model.joblib /models/model.joblib
 COPY ./webapp /app/webapp
 
 EXPOSE 8000
+EXPOSE 5432
 
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
@@ -23,4 +24,4 @@ ENV PATH="/py/bin:$PATH"
 
 USER appuser
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
