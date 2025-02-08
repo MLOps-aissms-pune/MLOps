@@ -22,11 +22,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          sudo apt-get update
+          sudo apt-get install -y docker.io docker-compose
 
       - name: Build Docker and push
         run: |
           docker-compose -f docker-compose.yml build
-          docker tag mlops:latest vaishnavi639/webapp:latest
+          docker tag mlops:latest vaishnavi639/mlops:latest
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push vaishnavi639/mlops:latest
         env:
