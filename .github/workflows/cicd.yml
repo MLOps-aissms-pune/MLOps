@@ -1,4 +1,4 @@
-name: Build, Analyze,Scan
+name: Build, Analyze, Scan
 
 on:
   push:
@@ -8,7 +8,8 @@ on:
 jobs:
   build_analyze_scan:
     name: Build
-    runs-on: ubuntu-latest #[self-hosted:- self hosted runner if u want to use computation of ec2]
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -38,9 +39,17 @@ jobs:
           context: .
           push: true
           tags: vaishnavi639/mlops:latest
-      - name: Image_scan
+
+      - name: Install Trivy # 🔥 Fix: Install Trivy before running scan
+        run: |
+          sudo apt update
+          sudo apt install -y wget
+          wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_Linux-64bit.tar.gz
+          tar zxvf trivy_Linux-64bit.tar.gz
+          sudo mv trivy /usr/local/bin/
+
+      - name: Image Scan with Trivy
         run: trivy image vaishnavi639/mlops:latest > scan.txt
 
-      - name: Trivy Compliance
+      - name: Trivy Compliance Scan
         run: trivy image --compliance docker-cis vaishnavi639/mlops:latest > compliance.txt
-##maybe done
